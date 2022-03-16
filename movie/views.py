@@ -5,7 +5,7 @@ from rest_framework import status
 from movie.serializers import DirectorSerializer
 from movie.models import Director
 
-from movie.serializers import MovieSerializer
+from movie.serializers import MovieSerializer, MovieRateSerializer
 from movie.models import Movie
 
 from movie.serializers import ReviewSerializer
@@ -55,6 +55,12 @@ def review_item_view(request, id):
     except Review.DoesNotExist:
         return Response(data={'error': 'Not found!!!!'}, status=status.HTTP_404_NOT_FOUND)
     serializer = ReviewSerializer(movie)
+    return Response(data=serializer.data)
+
+@api_view(['GET'])
+def movie_rating_view(request):
+    movie = Movie.objects.all()
+    serializer = MovieRateSerializer(movie, many=False)
     return Response(data=serializer.data)
 
 
