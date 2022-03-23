@@ -40,5 +40,25 @@ class MovieRateSerializer(serializers.ModelSerializer):
         fields = 'id title rating_average'.split()
 
 
+class DirectorValidateSerializer(serializers.Serializer):
+    name = serializers.CharField(min_length=4)
+
+
+class MovieValidateSerializer(serializers.Serializer):
+    title = serializers.CharField(max_length=20)
+    description = serializers.CharField()
+    duration = serializers.IntegerField()
+
+class ReviewValidateSerializer(serializers.Serializer):
+    text = serializers.CharField()
+    movie_id = serializers.IntegerField
+    stars = serializers.ListField()
+
+
+
+
+
+
+
 
 
