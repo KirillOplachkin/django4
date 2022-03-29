@@ -22,14 +22,13 @@ from users import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/directors/', views.director_list_view),
-    path('api/v1/movies/', views.movie_list_view),
-    path('api/v1/reviews/', views.review_list_view),
-    path('api/v1/directors/<int:id>/', views.director_item_view),
-    path('api/v1/movies/<int:id>/', views.movie_item_view),
-    path('api/v1/reviews/<int:id>/', views.review_item_view),
-    path('api/v1/movies/reviews/', views.MovieRateSerializer),
-    path('api/v1/register/', user_views.registration),
-    path('api/v1/login/', user_views.authorization)
+    path('api/v1/directors/', views.DirectorAPIView.as_view()),
+    path('api/v1/movies/', views.MovieAPIView.as_view()),
+    path('api/v1/reviews/', views.ReviewAPIView.as_view()),
+    path('api/v1/directors/<int:id>/', views.DirectorItemAPIView.as_view()),
+    path('api/v1/movies/<int:id>/', views.MovieItemAPIView.as_view()),
+    path('api/v1/reviews/<int:id>/', views.ReviewItemAPIView.as_view()),
+    path('api/v1/register/', user_views.RegisterAPIView.as_view()),
+    path('api/v1/login/', user_views.AuthAPIView.as_view())
 ]
 
